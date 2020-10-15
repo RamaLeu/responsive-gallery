@@ -1,0 +1,74 @@
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin whiteBorder {
+  border: 5px solid gray;
+}
+@mixin flexRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
+.header {
+  @include flexCenter();
+}
+.img {
+  height: 500px;
+  width: 500px;
+  margin-left: 2px;
+  margin-right: 2px;
+  filter: blur(25px);
+  &:hover {
+    filter: blur(0px);
+    animation: rotato 0.5s;
+    transform: rotate(360deg);
+    filter: contrast(10000%);
+  }
+}
+@keyframes rotato {
+  /* Animation happens between 0% and 50% */
+  0% {
+    transform: rotate(20deg);
+    filter: contrast(200%);
+  }
+  10% {
+    sfilter: contrast(100%);
+  }
+  15% {
+    transform: rotate(40deg);
+  }
+  35% {
+    filter: contrast(200%);
+    transform: rotate(360deg);
+  }
+  /* Animation is paused/delayed between 50% and 100% */
+  50% {
+    transform: rotate(60deg);
+    filter: contrast(400%);
+  }
+  70% {
+    transform: rotate(360deg);
+    filter: contrast(1000%);
+  }
+  100% {
+    transform: rotate(360deg);
+    filter: contrast(10000%);
+  }
+}
+body {
+  @include flexCenter();
+  flex-direction: column;
+}
+.box {
+  @include flexRow();
+  width: 60%;
+  @include flexCenter();
+  @include whiteBorder();
+}
